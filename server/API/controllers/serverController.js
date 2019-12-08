@@ -3,7 +3,7 @@
 let mongoose  = require('mongoose'),
     Deploy    = mongoose.model('Deploys')
 
-exports.createADeployment = function(req, res) {
+exports.createADeployment = (req, res) => {
   console.log(req.body);
   let throwErrors = []
 
@@ -17,9 +17,15 @@ exports.createADeployment = function(req, res) {
           console.log(errors[key].message);
         }
       }
-      return res.status(400).json({message: throwErrors});
+      res.status(400).json({message: throwErrors});
     }
     console.log(deploy)
-    return res.status(201).json({deploy: deploy});
+    res.status(201).json({deploy: deploy});
+  });
+};
+
+exports.getAllDeployments = (req, res) => {
+  Deploy.find({}, (err, deploys) => {
+    res.status(200).json({deploys: deploys});  
   });
 };

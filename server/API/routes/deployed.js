@@ -6,7 +6,7 @@ module.exports = function(app) {
     .route('/v1/server/deployed')
     .post(server.createADeployment);
 
-  // app
-  //   .route('/server/deployed')
-  //   .get(server.getAllDeployments);
+  app
+    .route('/v1/server/deployed')
+    .get(server.getAllDeployments);
 };
