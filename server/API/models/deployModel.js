@@ -1,8 +1,8 @@
 'use strict';
-var mongoose         = require('mongoose'),
+let mongoose         = require('mongoose'),
     Schema           = mongoose.Schema;
 
-var deploySchema = new Schema({
+let deploySchema = new Schema({
   branch: {
     type: String,
     required: [true, 'Branch cannot be blank.']

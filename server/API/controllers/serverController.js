@@ -1,6 +1,25 @@
 'use strict';
 
+let mongoose  = require('mongoose'),
+    Deploy    = mongoose.model('Deploys')
+
 exports.createADeployment = function(req, res) {
   console.log(req.body);
-  res.status(201).json({message: "hello"})
+  let throwErrors = []
+
+  new Deploy(req.body).save((err, deploy) => {
+    if (err) {
+      console.log(err)
+      var errors = err.errors
+      for (var key in errors) {
+        if (errors.hasOwnProperty(key)) {
+          throwErrors.push(errors[key].message);
+          console.log(errors[key].message);
+        }
+      }
+      return res.status(400).json({message: throwErrors});
+    }
+    console.log(deploy)
+    return res.status(201).json({deploy: deploy});
+  });
 };

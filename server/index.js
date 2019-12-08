@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const consola = require('consola')
+const mongoose  = require('mongoose')
 const { Nuxt, Builder } = require('nuxt')
+let Deploys = require('./API/models/deployModel')
 const app = express()
 
 
@@ -25,6 +27,11 @@ async function start () {
   } else {
     await nuxt.ready()
   }
+
+  await mongoose.connect('mongodb://server:Evercam123%40@ds153003.mlab.com:53003/deploys', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
   let bikeRoutes = require('./API/routes/deployed')(app);
 

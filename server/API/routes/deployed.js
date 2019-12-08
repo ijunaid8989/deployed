@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
- var server = require('../controllers/serverController');
+ let server = require('../controllers/serverController');
 
   app
     .route('/v1/server/deployed')
