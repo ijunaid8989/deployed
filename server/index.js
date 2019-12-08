@@ -1,7 +1,12 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -20,6 +25,8 @@ async function start () {
   } else {
     await nuxt.ready()
   }
+
+  let bikeRoutes = require('./API/routes/deployed')(app);
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
