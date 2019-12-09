@@ -15,9 +15,13 @@ let deploySchema = new Schema({
     type: String,
     required: [true, 'User cannot be blank.']
   },
-  commitDetails: {
+  commit_details: {
     type: String,
     required: [true, 'Commit Details cannot be blank.']
+  },
+  commit_date: {
+    type: Date,
+    required: [true, 'Commit datetime cannot be blank.']
   },
   created_at: {
     type: Date,
