@@ -11,17 +11,21 @@ let deploySchema = new Schema({
     type: String,
     required: [true, 'Sha cannot be blank.']
   },
-  user: {
+  authorEmail: {
     type: String,
-    required: [true, 'User cannot be blank.']
+    required: [true, 'Author Email cannot be blank.']
   },
-  commit_details: {
+  authorName: {
     type: String,
-    required: [true, 'Commit Details cannot be blank.']
+    required: [true, 'Author Name cannot be blank.']
   },
-  commit_date: {
+  subject: {
     type: Date,
-    required: [true, 'Commit datetime cannot be blank.']
+    required: [true, 'Subject cannot be blank.']
+  },
+  unix_timestamp: {
+    type: String,
+    required: [true, 'Commit Time cannot be blank.']
   },
   created_at: {
     type: Date,
@@ -29,4 +33,4 @@ let deploySchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Deploys', deploySchema);
+module.exports = mongoose.model('Deploys', deploySchema)
