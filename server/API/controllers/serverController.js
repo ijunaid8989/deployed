@@ -17,10 +17,10 @@ exports.createADeployment = (req, res) => {
           console.log(errors[key].message);
         }
       }
-      res.status(400).json({message: throwErrors})
+      return res.status(400).json({message: throwErrors})
     }
     console.log(deploy)
-    res.status(201).json({deploy: deploy})
+    return res.status(201).json({deploy: deploy})
   })
 }
 

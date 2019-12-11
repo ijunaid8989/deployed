@@ -9,4 +9,4 @@ module.exports = function(app) {
   app
     .route('/v1/server/deployed')
     .get(server.getAllDeployments);
-};
+}
