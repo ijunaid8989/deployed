@@ -20,7 +20,7 @@ let deploySchema = new Schema({
     required: [true, 'Author Name cannot be blank.']
   },
   subject: {
-    type: Date,
+    type: String,
     required: [true, 'Subject cannot be blank.']
   },
   unix_timestamp: {
