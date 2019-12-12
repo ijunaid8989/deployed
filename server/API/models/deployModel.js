@@ -19,6 +19,14 @@ let deploySchema = new Schema({
     type: String,
     required: [true, 'Author Name cannot be blank.']
   },
+  commiterEmail: {
+    type: String,
+    required: [true, 'Commiter Email cannot be blank.']
+  },
+  commiterName: {
+    type: String,
+    required: [true, 'Commiter Name cannot be blank.']
+  },
   subject: {
     type: String,
     required: [true, 'Subject cannot be blank.']
