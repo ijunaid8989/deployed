@@ -31,6 +31,10 @@ let deploySchema = new Schema({
     type: String,
     required: [true, 'Subject cannot be blank.']
   },
+  deployType: {
+    type: String,
+    required: [true, 'Deploy Type cannot be blank.']
+  },
   authorUnixTimestamp: {
     type: String,
     required: [true, 'Author Commit Time cannot be blank.']
