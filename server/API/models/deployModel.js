@@ -23,9 +23,13 @@ let deploySchema = new Schema({
     type: String,
     required: [true, 'Subject cannot be blank.']
   },
-  unix_timestamp: {
+  authorUnixTimestamp: {
     type: String,
-    required: [true, 'Commit Time cannot be blank.']
+    required: [true, 'Author Commit Time cannot be blank.']
+  },
+  commiterUnixTimestamp: {
+    type: String,
+    required: [true, 'Commiter Commit Time cannot be blank.']
   },
   created_at: {
     type: Date,
