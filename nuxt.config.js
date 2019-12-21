@@ -28,6 +28,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-gravatar'
   ],
   /*
   ** Nuxt.js dev-modules

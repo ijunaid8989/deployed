@@ -3,15 +3,16 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2 col-xs-12">
         <ul class="timeline-v2">
-          <li data-date="78:98">
+          <li v-for="deploy in deploys" :data-date="dataFormation(deploy.created_at)">
             <div>
               <div class="media">
                 <div class="media-left">
                   <a href="javascript:void(0);">
-                    <img class="media-object img-circle" src="https://via.placeholder.com/150" alt="Image">
+                    <v-gravatar class="media-object img-circle" :email="deploy.authorEmail" />
                   </a>
                 </div>
-                <div class="media-body media-middle" data-time="89:98">jgjgjhgjhgjhg</div>
+                <div class="media-body media-middle" :data-time="unixParse(deploy.authorUnixTimestamp)">
+                </div>
               </div>
             </div>
           </li>
@@ -23,15 +24,31 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
+
 export default {
   async asyncData () {
     const { data } = await axios.get('/v1/server/deployed')
-    return { deploys: data }
+    console.log(data)
+    return { deploys: data.deploys }
+  },
+  methods: {
+    dataFormation (date) {
+      return moment(date).format('dddd')
+    },
+    unixParse (date) {
+      return moment.unix(date).local().format('MMMM Do YYYY, h:mm:ss a')
+    }
   }
 }
 </script>
 
 <style>
+
+body {
+  background-color: #f5f5f5 !important;
+  font-family: 'Roboto', sans-serif !important;
+}
 
 .container {
   padding-top: 40px;
