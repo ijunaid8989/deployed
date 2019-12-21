@@ -8,7 +8,7 @@
               <div class="media">
                 <div class="media-left">
                   <a href="javascript:void(0);">
-                    <v-gravatar class="media-object img-circle" :email="deploy.authorEmail" />
+                    <v-gravatar class="media-object rounded-circle" :email="deploy.authorEmail" />
                   </a>
                 </div>
                 <div class="media-body media-middle" :data-time="unixParse(deploy.authorUnixTimestamp)">
@@ -29,7 +29,6 @@ import moment from 'moment'
 export default {
   async asyncData () {
     const { data } = await axios.get('/v1/server/deployed')
-    console.log(data)
     return { deploys: data.deploys }
   },
   methods: {
