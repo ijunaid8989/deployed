@@ -11,7 +11,8 @@
                     <v-gravatar class="media-object rounded-circle" :email="deploy.authorEmail" />
                   </a>
                 </div>
-                <div class="media-body media-middle" :data-time="unixParse(deploy.authorUnixTimestamp)">
+                <div class="media-body align-middle" :data-time="unixParse(deploy.authorUnixTimestamp)">
+                  <p><strong>{{ deploy.authorName }}</strong></p>
                 </div>
               </div>
             </div>
@@ -61,6 +62,7 @@ body {
   padding-right: 20px;
   position: relative;
 }
+
 .timeline-v2 .media {
   padding: 20px;
   background-color: #fff;
@@ -69,10 +71,12 @@ body {
   -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.025);
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.025);
 }
+
 .timeline-v2 .media-object {
   width: 45px;
   height: 45px;
 }
+
 .timeline-v2 .media-body[data-time]::after {
   content: attr(data-time);
   position: absolute;
@@ -87,12 +91,15 @@ body {
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
+
 .timeline-v2 .media-body p:last-child {
   margin-bottom: 0;
 }
+
 .timeline-v2 > li {
   position: relative;
 }
+
 .timeline-v2 > li[data-date]::before {
   content: attr(data-date);
   position: absolute;
@@ -104,6 +111,7 @@ body {
   font-size: 12px;
   color: #777;
 }
+
 .timeline-v2 > li[data-date] > div .media::before {
   content: '';
   position: absolute;
@@ -121,13 +129,16 @@ body {
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
+
 .timeline-v2 > li[data-date] > div + div .media::before {
   border-color: #4caf50;
 }
+
 .timeline-v2 > li[data-date] > div .media:hover::before,
 .timeline-v2 > li[data-date] > div + div .media:hover::before {
   border-color: #f44336;
 }
+
 .timeline-v2 > li:not(:last-child) > div:before, .timeline-v2 > li:last-child > div:not(:last-child)::before {
   content: '';
   position: absolute;
@@ -136,15 +147,18 @@ body {
   height: 100%;
   border: 1px solid #e8e8e8;
 }
+
 .timeline-v2 > li:not(:last-child) > div:not(:last-child):before, .timeline-v2 > li:last-child > div:not(:last-child)::before {
   border-style: dashed;
 }
+
 .timeline-v2 > li > div {
   margin-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
 }
+
 .timeline-v2 > li > div::after {
   content: '';
   position: absolute;
@@ -154,8 +168,27 @@ body {
   border-width: 6px 6px 6px 0;
   border-color: transparent #fff transparent transparent;
 }
+
 .timeline-v2 > li > div:hover .media-body[data-time]::after {
   background-color: #f44336;
+}
+
+.media-middle {
+  vertical-align: middle;
+}
+
+.media-body, .media-left, .media-right {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media-body {
+  width: 10000px;
+}
+
+.media, .media-body {
+  overflow: hidden;
+  zoom: 1;
 }
 
 @media (max-width: 767px) {
