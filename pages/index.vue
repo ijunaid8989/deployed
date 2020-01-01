@@ -12,7 +12,7 @@
                   </a>
                 </div>
                 <div class="media-body align-middle" :data-time="unixParse(deploy.authorUnixTimestamp)">
-                  <p><strong>{{ deploy.authorName }}</strong></p>
+                  <p><strong>{{ deploy.authorName }}</strong> did a <span v-html="parseDeploy(deploy.deployType)"></span> deploy of branch <i>{{ deploy.branch }}</i> with a commit as <a  target='_blank' :href="`https://github.com/evercam/evercam-server/commit/${deploy.sha}`">{{ deploy.subject }}</a></p>
                 </div>
               </div>
             </div>
@@ -38,6 +38,13 @@ export default {
     },
     unixParse (date) {
       return moment.unix(date).local().format('MMMM Do YYYY, h:mm:ss a')
+    },
+    parseDeploy (type) {
+      if (type === 'hotcode') {
+        return '<span class="label label-danger">Hotcode</span>'
+      } else {
+        return '<span class="label label-primary">Normal</span>'
+      }
     }
   }
 }
